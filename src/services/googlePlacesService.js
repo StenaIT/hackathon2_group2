@@ -2,11 +2,11 @@ import GooglePlaces from 'node-googleplaces';
 
 class GooglePlacesService {
   constructor() {
-    this.places = new GooglePlaces(process.env.GOOGLE_PLACES_API);
+    this.places = new GooglePlaces(process.env.GOOGLE_PLACES_API_KEY);
   }
 
   searchGooglePlaces(params, callback) {
-    places.textSearch(params, (err, res) => {
+    this.places.textSearch(params, (err, res) => {
       console.log(res.body);
       if (!err) {
         callback(null, res);
