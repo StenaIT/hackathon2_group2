@@ -1,6 +1,9 @@
 import express from 'express';
-import twitterSvc from './services/twitterService';
-import googlePlacesSvc from './services/GooglePlacesService';
+import TwitterService from './services/twitterService';
+import GooglePlacesService from './services/GooglePlacesService';
+
+const google = new GooglePlacesService();
+const twitter = new TwitterService();
 
 const app = express();
 
@@ -10,10 +13,15 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/public/index.html');
 });
 
-app.get('/searchTweet', (req, res) => {
+app.get('/test', (req, res) => {
+  twitter.test();
+  res.send('Test');
+});
+
+app.get('/searchTwitter', (req, res) => {
   console.log('A request to twitter!');
-  const params = req.query;
-  twitterSvc.search(params, (error, data) => {
+  const searchText = req.query.searchText;
+  twitter.search(searchText, (error, data) => {
     if (error) {
       console.log(error);
       res.send(error)
@@ -26,8 +34,10 @@ app.get('/searchTweet', (req, res) => {
 
 app.get('/searchGoogle', (req, res) => {
   console.log('A request to Google!');
-  const params = req.query
-  googlePlacesSvc.searchGooglePlaces(params, (error, data) => {
+  const params = {
+    query: req.query.searchText
+  };
+  google.searchGooglePlaces(params, (error, data) => {
     if (error) {
       console.log(error);
       res.send(error);

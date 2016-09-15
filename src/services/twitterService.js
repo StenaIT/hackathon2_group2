@@ -10,8 +10,13 @@ class TwitterService {
     });
   }
 
-  search(params, callback) {
-    client.get('search/tweets', params, function(error, tweets, response) {
+  test() {
+    console.log('Test!');
+  }
+
+  search(searchText, callback) {
+    console.log('trying to get data from twitter');
+    this.client.get('search/tweets', {q: searchText}, (error, tweets, response) => {
       if (!error) {
         console.log(tweets);
         return callback(null, tweets);
