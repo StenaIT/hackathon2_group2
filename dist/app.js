@@ -8,12 +8,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var app = (0, _express2.default)();
 
-app.use(_express2.default.static('public'));
+app.use(_express2.default.static(__dirname + '/public'));
 
 app.get('/', function (req, res) {
   res.sendFile(__dirname + '/public/index.html');
 });
 
 app.listen(3000, function () {
-  console.log('Example app listening on port 4000!');
+  console.log('Example app listening on port 3000!');
 });
