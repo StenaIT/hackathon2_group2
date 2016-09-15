@@ -64,15 +64,28 @@ ul {
     border-radius: 4px;
     color: #FFF;
     font-weight: bold;
-}
-.listItem:hover {
-    background: #31708f;
+    position: relative;
 }
 
-.listItem div {
-    color: #333;
-    background-color: #FFF;
-    box-sizing: border-box;
-    border-radius: 4px;
-    display: block;
+
+.tweetItem {
+    background: #f0f8fd;
+    color: #1e77b3;
+    border-radius: 20px;
+    padding: 20px;
+    margin-left: -40px;
+    margin-top: 20px;
+    font-weight: normal;
+
+}
+span.restName {
+    width: 80%;
+    display: inline-block;
+    font-size: 20px;
+}
+span.rating {
+    font-size: 40px;
+    position: absolute;
+    top: 0px;
+    right: 30px;
 }

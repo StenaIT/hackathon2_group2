@@ -55,7 +55,8 @@ class ListItem extends React.Component {
 
     return (
       <div className="listItem" onClick={this.toggleInfo}>
-        {this.props.restaurant.name}
+        <span className="restName">{this.props.restaurant.name}</span>
+        <span className="rating">{this.props.restaurant.rating}</span>
         <div>
           {info}
         </div>
