@@ -1,2 +1,8 @@
 node_modules
 npm-debug.log
+
+dist/public/client.js
+
+dist/public/client.js
+
+dist/public/index.html

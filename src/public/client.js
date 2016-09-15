@@ -2,16 +2,33 @@
 class SearchBox extends React.Component {
   constructor() {
     super();
+
     this.handleClick = this.handleClick.bind(this);
   }
   handleClick() {
-    console.log("clicked search");
-  /*  $.get( "  https://maps.googleapis.com/maps/api/place/textsearch/xml?query=restaurants+in+Sydney&key=AIzaSyCuu4qJwbc6h_M_Tc-uQoORF5g4o-pmito" )
-    .done(function( data ) {
-    console.log(data );
-  });
+    console.log("clicked");
+  /*  var arr = [];
+    for (var i=0, t=20; i<t; i++) {
+        arr.push(Math.round(Math.random() * t))
+    }
+
+    ReactDOM.render(
+
+      <ProperListRender list={arr}  />,
+      document.getElementById('searchresult')
+    );
 */
-  }
+$.get('http://codepen.io/jobs.json')
+  .done(function(result) {
+    console.log(result);
+    ReactDOM.render(
+
+      <ProperListRender list={result.jobs}  />,
+      document.getElementById('searchresult')
+    );
+});
+}
+
   render() {
     return (
       <div className="searchBox">
@@ -21,13 +38,24 @@ class SearchBox extends React.Component {
             <input type="text" placeholder="Enter location" />
           <div className="submitButton" onClick={this.handleClick}>SEARCH</div>
           </form>
-
           </div>
+
       </div>
     );
    }
  }
 
+class ProperListRender extends React.Component {
+   render() {
+     return (
+       <ul>
+         {this.props.list.map(function(job, key){
+           return <li key={key}>{job.company_name}</li>;
+         })}
+       </ul>
+     );
+    }
+  }
 
 ReactDOM.render(
   <SearchBox />,
