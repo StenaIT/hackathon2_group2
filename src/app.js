@@ -13,12 +13,8 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/public/index.html');
 });
 
-app.get('/test', (req, res) => {
-  twitter.test();
-  res.send('Test');
-});
-
 app.get('/searchTwitter', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
   console.log('A request to twitter!');
   const searchText = req.query.searchText;
   twitter.search(searchText, (error, data) => {
@@ -49,5 +45,5 @@ app.get('/searchGoogle', (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log('Example app listening on port 3000!');
+  console.log('Hackathon App listening on port 3000!');
 });

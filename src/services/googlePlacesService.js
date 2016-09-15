@@ -7,7 +7,6 @@ class GooglePlacesService {
 
   searchGooglePlaces(params, callback) {
     this.places.textSearch(params, (err, res) => {
-      console.log(res.body);
       if (!err) {
         callback(null, res);
       } else {

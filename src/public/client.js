@@ -1,42 +1,97 @@
+class InfoBox extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div>
+        {this.props.name}
+      </div>
+    );
+  }
+}
+
+class ListItem extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.showInfo = false;
+
+    this.toggleInfo = this.toggleInfo.bind(this);
+  }
+
+  toggleInfo() {
+    console.log('List item clicked!');
+    this.showInfo = !this.showInfo;
+    this.forceUpdate();
+  }
+
+  render() {
+    let info = ''
+    if (this.showInfo) {
+      info = <InfoBox name={this.props.restaurant.name} />
+    }
+
+    return (
+      <div className="listItem" onClick={this.toggleInfo}>
+        {this.props.restaurant.name}
+        <div>
+          {info}
+        </div>
+      </div>
+    );
+  }
+}
+
+class ProperListRender extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <ul>
+        {this.props.list.map((restaurant, key) => {
+          return <li key={key}><ListItem restaurant={restaurant} /></li>
+        })}
+     </ul>
+    );
+  }
+}
 
 class SearchBox extends React.Component {
   constructor() {
     super();
     this.state = {
-        inputfield: ''
-      };
+        inputfield: '',
+        searchResult: []
+    };
 
     this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
+
   handleChange(event) {
-    this.setState({inputfield: event.target.value});
+    this.setState({
+      inputfield: event.target.value,
+      searchResult: this.state.searchResult
+    });
   }
 
   handleClick() {
     console.log("clicked " +  this.state.inputfield);
-  /*  var arr = [];
-    for (var i=0, t=20; i<t; i++) {
-        arr.push(Math.round(Math.random() * t))
-    }
 
-    ReactDOM.render(
-
-      <ProperListRender list={arr}  />,
-      document.getElementById('searchresult')
-    );
-*/
-$.getJSON('http://localhost:3000/searchGoogle?searchText=restaurant+'+  this.state.inputfield)
-  .done(function(result) {
-    var obj = JSON.parse(result.text);
+    $.getJSON('http://localhost:3000/searchGoogle?searchText=restaurant+'+  this.state.inputfield)
+      .done((result) => {
+        var obj = JSON.parse(result.text);
+        this.setState({
+          inputfield: '',
+          searchResult: obj.results
+        });
         console.log(obj);
-    ReactDOM.render(
-
-      <ProperListRender list={obj.results}  />,
-      document.getElementById('searchresult')
-    );
-});
-}
+    });
+  }
 
   render() {
     return (
@@ -45,26 +100,19 @@ $.getJSON('http://localhost:3000/searchGoogle?searchText=restaurant+'+  this.sta
         <div className="searchWrapper">
           <form>
             <input type="text" placeholder="Enter location" onChange={this.handleChange} />
-          <div className="submitButton" onClick={this.handleClick}>SEARCH</div>
+            <div className="submitButton" onClick={this.handleClick}>SEARCH</div>
           </form>
-          </div>
-
+        </div>
+        <div>
+          <ProperListRender list={this.state.searchResult}  />
+        </div>
       </div>
     );
-   }
- }
-
-class ProperListRender extends React.Component {
-   render() {
-     return (
-       <ul>
-         {this.props.list.map(function(restaurant, key){
-           return <li key={key}>{restaurant.name}</li>;
-         })}
-       </ul>
-     );
-    }
   }
+}
+
+
+
 
 ReactDOM.render(
   <SearchBox />,
