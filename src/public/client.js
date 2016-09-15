@@ -1,12 +1,32 @@
 class InfoBox extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      searchResult: []
+    };
+
+    this.getTwitterData();
+  }
+
+  getTwitterData() {
+    $.get('http://localhost:3000/searchTwitter?searchText=' +  this.props.name)
+      .done((result) => {
+        var obj = result;
+        this.setState({
+          searchResult: obj.statuses
+        });
+    });
   }
 
   render() {
     return (
-      <div>
-        {this.props.name}
+      <div className="tweetContainer">
+        <ul>
+          {this.state.searchResult.map((tweet, key) => {
+            return <li className="tweetItem" key={key}>{tweet.text}</li>
+          })}
+        </ul>
       </div>
     );
   }
@@ -107,11 +127,8 @@ class SearchBox extends React.Component {
     );
    }
  }
- 
+
 ReactDOM.render(
   <SearchBox />,
   document.getElementById('content')
 );
-
-
-//https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670,151.1957&radius=500&types=food&name=cruise&key=AIzaSyCuu4qJwbc6h_M_Tc-uQoORF5g4o-pmito
