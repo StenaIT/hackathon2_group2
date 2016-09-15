@@ -98,7 +98,7 @@ class SearchBox extends React.Component {
         <div className="welcomeText">Sök på stad</div>
         <div className="searchWrapper row">
           <form>
-            <input type="text" placeholder="Skriv in stad" onChange={this.handleChange} />
+            <input type="text" placeholder="Skriv in stad" onChange={this.handleChange}/>
             <div className="btn btn-block btn-lg btn-primary demobtn" onClick={this.handleClick}>SÖK</div>
           </form>
         </div>
@@ -107,7 +107,7 @@ class SearchBox extends React.Component {
     );
    }
  }
- 
+
 ReactDOM.render(
   <SearchBox />,
   document.getElementById('content')
