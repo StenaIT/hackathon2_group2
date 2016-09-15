@@ -75,9 +75,26 @@ ul {
     padding: 20px;
     margin-left: -40px;
     margin-top: 20px;
+    padding-bottom: 40px;
     font-weight: normal;
-
+    position: relative;
 }
+
+.tweetItem:after
+{
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent #f0f8fd;
+  display: block;
+  width: 0;
+  z-index: 1;
+  left: -10px;
+  top: 25px;
+}
+
+
 span.restName {
     width: 80%;
     display: inline-block;
@@ -88,4 +105,11 @@ span.rating {
     position: absolute;
     top: 0px;
     right: 30px;
+}
+span.tweetName {
+    font-style: italic;
+    position: absolute;
+    color: #1abc9c;
+    right: 20px;
+    bottom: 10px;
 }

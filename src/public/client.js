@@ -24,7 +24,8 @@ class InfoBox extends React.Component {
       <div className="tweetContainer">
         <ul>
           {this.state.searchResult.map((tweet, key) => {
-            return <li className="tweetItem" key={key}>{tweet.text}</li>
+            return <li className="tweetItem" key={key}>{tweet.text}
+            <span className="tweetName">{tweet.user.name}</span></li>
           })}
         </ul>
       </div>
