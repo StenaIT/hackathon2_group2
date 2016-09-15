@@ -53,3 +53,26 @@
   margin-left: 20px;
 
 }
+ul {
+    list-style-type: none;
+}
+.listItem {
+    background: #3498db;
+    display: block;
+    margin: 20px 0 0 -30px;
+    padding: 20px;
+    border-radius: 4px;
+    color: #FFF;
+    font-weight: bold;
+}
+.listItem:hover {
+    background: #31708f;
+}
+
+.listItem div {
+    color: #333;
+    background-color: #FFF;
+    box-sizing: border-box;
+    border-radius: 4px;
+    display: block;
+}
