@@ -14,47 +14,33 @@ class SearchBox extends React.Component {
   }
 
   handleClick() {
-    console.log("clicked " +  this.state.inputfield);
-  /*  var arr = [];
-    for (var i=0, t=20; i<t; i++) {
-        arr.push(Math.round(Math.random() * t))
-    }
 
-    ReactDOM.render(
-
-      <ProperListRender list={arr}  />,
+    $.getJSON('http://localhost:3000/searchGoogle?searchText=restaurant+'+  this.state.inputfield)
+    .done(function(result) {
+      var obj = JSON.parse(result.text);
+      ReactDOM.render(
+      <RestaurantList list={obj.results}  />,
       document.getElementById('searchresult')
     );
-*/
-$.getJSON('http://localhost:3000/searchGoogle?searchText=restaurant+'+  this.state.inputfield)
-  .done(function(result) {
-    var obj = JSON.parse(result.text);
-        console.log(obj);
-    ReactDOM.render(
-
-      <ProperListRender list={obj.results}  />,
-      document.getElementById('searchresult')
-    );
-});
+  });
 }
 
   render() {
     return (
       <div className="searchBox">
-        <div className="welcomeText">Enter your location:</div>
-        <div className="searchWrapper">
-          <form>
-            <input type="text" placeholder="Enter location" onChange={this.handleChange} />
-          <div className="submitButton" onClick={this.handleClick}>SEARCH</div>
+        <div className="welcomeText">Sök på stad</div>
+        <div className="searchWrapper row">
+        <form>
+              <input type="text" placeholder="Skriv in stad" onChange={this.handleChange} />
+            <div className="btn btn-block btn-lg btn-primary demobtn" onClick={this.handleClick}>SÖK</div>
           </form>
-          </div>
-
+        </div>
       </div>
     );
    }
  }
 
-class ProperListRender extends React.Component {
+class RestaurantList extends React.Component {
    render() {
      return (
        <ul>

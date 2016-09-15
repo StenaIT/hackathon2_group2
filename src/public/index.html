@@ -4,6 +4,13 @@
   <head>
     <meta charset="utf-8" />
     <title>Group2 Search Restaurants</title>
+    <!-- Loading Bootstrap -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Loading Flat UI -->
+    <link href="flat-ui.min.css" rel="stylesheet">
+    <link href="demo.css" rel="stylesheet">
+
     <script src="https://unpkg.com/react@15.3.1/dist/react.js"></script>
     <script src="https://unpkg.com/react-dom@15.3.1/dist/react-dom.js"></script>
      <script src="https://unpkg.com/jquery@3.1.0/dist/jquery.min.js"></script>
@@ -11,9 +18,16 @@
     <script src="https://unpkg.com/remarkable@1.6.2/dist/remarkable.min.js"></script>
   </head>
   <body>
-    <div class="pageWrapper">
-      <div id="content"></div>
-      <div id="searchresult"></div>
+    <div class="container">
+      <div class="demo-headline">
+        <h1 class="demo-logo">
+          <div class="logo"></div>
+          Snackomaten
+          <small>By HackerGruppe 2</small>
+        </h1>
+      </div>
+      <div class="row demo-row" id="content"></div>
+        <div class="row demo-row" id="searchresult"></div>
     </div>
     <script type="text/babel" src="client.js"></script>
   </body>
