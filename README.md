@@ -5,7 +5,7 @@ A simple web app for showing restaurants at a specific location and related twee
 ###Prerequisite
  - Node.js (only tested with version 6.5.0).
 
-###To start the application run the following commands in the application root folder:
+To start the application run the following commands in the application root folder:
     npm install
     npm start
     
