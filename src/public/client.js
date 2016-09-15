@@ -18,7 +18,7 @@ class SearchBox extends React.Component {
       document.getElementById('searchresult')
     );
 */
-$.get('http://codepen.io/jobs.json')
+$.get('http://localhost:3000/searchGoogle?searchText=restaurant+manhattan')
   .done(function(result) {
     console.log(result);
     ReactDOM.render(
