@@ -1,0 +1,55 @@
+
+.container {
+  width: 970px !important;
+}
+.demo-headline {
+  padding: 50px 0 50px;
+  text-align: center;
+}
+.demo-logo {
+  font: 900 90px/100px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: -2px;
+  margin: 10px 0;
+}
+.demo-logo .logo {
+  background: url(img/logo-mask.png) center 0 no-repeat;
+  height: 242px;
+  margin: 0 auto 26px;
+  overflow: hidden;
+  text-indent: -9999em;
+  width: 236px;
+}
+.demo-logo small {
+  color: rgba(52, 73, 94, 0.3);
+  display: block;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0;
+  padding-top: 5px;
+}
+.demo-row {
+  margin-bottom: 20px;
+}
+.demo-panel-title {
+    padding-top: 20px;
+    margin: 2px 0 20px;
+    font: bold 23px/40px "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.welcomeText {
+  padding-top: 20px;
+    margin: 2px 0 20px;
+    font: bold 23px/40px "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.searchWrapper input {
+  width: 70%;
+  margin-left: 15px;
+  height: 42px;
+  padding: 5px;
+  display: inline-block;
+}
+.demobtn {
+  width: 26%;
+  display: inline-block;
+  margin-left: 20px;
+
+}

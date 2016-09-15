@@ -44,7 +44,7 @@ class ListItem extends React.Component {
   }
 }
 
-class ProperListRender extends React.Component {
+class RestaurantList extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -81,7 +81,6 @@ class SearchBox extends React.Component {
 
   handleClick() {
     console.log("clicked " +  this.state.inputfield);
-
     $.getJSON('http://localhost:3000/searchGoogle?searchText=restaurant+'+  this.state.inputfield)
       .done((result) => {
         var obj = JSON.parse(result.text);
@@ -90,30 +89,25 @@ class SearchBox extends React.Component {
           searchResult: obj.results
         });
         console.log(obj);
-    });
+      });
   }
 
   render() {
     return (
       <div className="searchBox">
-        <div className="welcomeText">Enter your location:</div>
-        <div className="searchWrapper">
+        <div className="welcomeText">Sök på stad</div>
+        <div className="searchWrapper row">
           <form>
-            <input type="text" placeholder="Enter location" onChange={this.handleChange} />
-            <div className="submitButton" onClick={this.handleClick}>SEARCH</div>
+            <input type="text" placeholder="Skriv in stad" onChange={this.handleChange} />
+            <div className="btn btn-block btn-lg btn-primary demobtn" onClick={this.handleClick}>SÖK</div>
           </form>
         </div>
-        <div>
-          <ProperListRender list={this.state.searchResult}  />
-        </div>
+        <RestaurantList list={this.state.searchResult}  />
       </div>
     );
-  }
-}
-
-
-
-
+   }
+ }
+ 
 ReactDOM.render(
   <SearchBox />,
   document.getElementById('content')
