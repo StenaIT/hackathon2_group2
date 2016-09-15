@@ -1,14 +1,3 @@
 node_modules
 npm-debug.log
-<<<<<<< HEAD
-
-dist/public/client.js
-
-dist/public/client.js
-
-dist/public/index.html
-=======
 dist
->>>>>>> origin/master
-
-dist/app.js
